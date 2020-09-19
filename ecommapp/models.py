@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.utils.translation import ugettext_lazy as _
 
 from ecommapp.managers import CustomUserManager
+
 # Create your models here.
 class cupon(models.Model):
     codigo = models.CharField(max_length=200)

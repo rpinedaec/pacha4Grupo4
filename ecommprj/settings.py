@@ -15,6 +15,15 @@ import django_heroku
 import os
 from datetime import timedelta
 
+import environ
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, True)
+)
+# reading .env file
+environ.Env.read_env()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -57,7 +66,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-  #  'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -133,10 +142,10 @@ USE_TZ = True
 
 django_heroku.settings(locals())
 
-AWS_MEDIA_STORAGE_BUCKET_NAME = 'pcqhtcstatic'
+AWS_MEDIA_STORAGE_BUCKET_NAME = env("AWS_MEDIA_STORAGE_BUCKET_NAME")
 AWS_MEDIA_S3_REGION_NAME = 'us-east-2'
-AWS_MEDIA_ACCESS_KEY_ID = 'AKIAYI4N3OHSV2KHEP6G'
-AWS_MEDIA_SECRET_ACCESS_KEY = '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'
+AWS_MEDIA_ACCESS_KEY_ID = env("AWS_MEDIA_ACCESS_KEY_ID")
+AWS_MEDIA_SECRET_ACCESS_KEY = env("AWS_MEDIA_SECRET_ACCESS_KEY")
 AWS_MEDIA_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_MEDIA_STORAGE_BUCKET_NAME
 DEFAULT_FILE_STORAGE = 'ecommprj.custom_storages.MediaStorage'
 
@@ -169,6 +178,7 @@ ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/?verification=1'
 SITE_ID = 1
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 REST_USE_JWT = True
+
 JWT_AUTH = {
   'JWT_ENCODE_HANDLER':
   'rest_framework_jwt.utils.jwt_encode_handler',
