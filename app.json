@@ -7,7 +7,7 @@
   "addons": [ "heroku-postgresql" ],
   "env": {
     "SECRET_KEY": {
-      "description": "!__mnm1@$#9a3iducr%%uxw)*8%)qdz#=&*6^e8w@%(6%*d+8h",
+      "description": "c(5omj(5_kxv_2^+wrme0rfe+(_&c*%*uq6(&km06t@r@i5q)3",
       "generator": "secret"
     }
   
