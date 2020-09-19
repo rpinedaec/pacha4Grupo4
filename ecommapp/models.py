@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here.
 class cupon(models.Model):
     codigo = models.CharField(max_length=200)
@@ -33,7 +32,7 @@ class producto(models.Model):
     descripcion = models.CharField(max_length=200)
     categoria = models.ForeignKey(categoria, on_delete=models.CASCADE)
     igv = models.BooleanField(default=True)
-    imagen = models.ImageField(upload_to = 'productos')
+    imagen = models.FileField()
     precio = models.DecimalField(max_digits=10,decimal_places=2)
     descuento = models.DecimalField(max_digits=10,decimal_places=2)
     def __str__(self):

@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'reset_migrations',
+    'storages',
     'rest_framework',
     'ecommapp'
     
@@ -122,7 +124,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = "/static/"
-
 django_heroku.settings(locals())
+
+AWS_MEDIA_STORAGE_BUCKET_NAME = 'pcqhtcstatic'
+AWS_MEDIA_S3_REGION_NAME = 'us-east-2'
+AWS_MEDIA_ACCESS_KEY_ID = 'AKIAYI4N3OHSV2KHEP6G'
+AWS_MEDIA_SECRET_ACCESS_KEY = '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'
+AWS_MEDIA_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_MEDIA_STORAGE_BUCKET_NAME
+DEFAULT_FILE_STORAGE = 'ecommprj.custom_storages.MediaStorage'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 5,
+    'DEFAULT_FILTER_BACKENDS':('django_filters.rest_framework.DjangoFilterBackend',),
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}

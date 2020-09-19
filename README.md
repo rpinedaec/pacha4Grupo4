@@ -10,19 +10,17 @@
 
 **Insumos brindados por los docentes:**
 
- - Motor de Base de Datos PostgreSQL(migración): pacha4grupo1\ecommapp\migrations\0001_initial.py
+ - Motor de Base de Datos PostgreSQL(migración): pacha4grupo4\ecommapp\migrations\0001_initial.py
  - Diseño de la aplicación (historias de usuario)
  - Documentación y ejercicios similares al reto
  - Repositorio grupal por proyecto
 	 1. BackEnd
-		 - https://github.com/rpinedaec/pacha4Grupo1.git
+		 - https://github.com/rpinedaec/pacha4Grupo4.git
 		 - Participantes:
-		 	- bruce.porras@PachaQTec.edu.pe
-			- denisse.garcia@PachaQTec.edu.pe
-			- **paola.sanchez@PachaQTec.edu.pe**
+			- **roberto.pineda@PachaQTec.edu.pe**
 
 	 2. FrontEnd
-		 - https://github.com/rpinedaec/pacha4Grupo1.git
+		 - https://github.com/rpinedaec/pacha4Grupo4.git
 
 **Herramientas Colaborativas:**
  - Control de versiones GitLab/GitHub
