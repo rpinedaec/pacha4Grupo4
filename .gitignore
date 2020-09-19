@@ -13,5 +13,4 @@ pip-selfcheck.json
 *.stackdump
 *.exe
 staticfiles
-.env
 db.sqlite3
