@@ -95,7 +95,7 @@ def charges(request):
         moneda = request.POST['moneda']
 
         #culqi.secret_key = "sk_test_9nH5LBeMpmnk4qvI"
-        auth_token=env("CULQI_AUTH_TOKEN")
+        auth_token=CULQI_AUTH_TOKEN
         hed = {'Authorization': 'Bearer ' + auth_token}
         data = {
             'amount': monto,
@@ -106,7 +106,7 @@ def charges(request):
             'metadata':{'Descripcion': descrpcion}
         }
 
-        url = env("CULQI_URL")
+        url = CULQI_URL
         charge = requests.post(url, json=data, headers=hed)
 
         logger.debug(charge.json())
