@@ -1,4 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.utils.translation import ugettext_lazy as _
+
+from ecommapp.managers import CustomUserManager
 # Create your models here.
 class cupon(models.Model):
     codigo = models.CharField(max_length=200)
@@ -19,13 +23,17 @@ class categoria(models.Model):
     def __str__(self):
         return self.nombre
 
-class cliente(models.Model):
-    username = models.CharField(max_length=200)
-    nombre = models.CharField(max_length=200)
-    email = models.EmailField()
-    password = models.CharField(max_length=200)
+class cliente(AbstractUser):
+    username = None
+    name = models.CharField(max_length=200)
+    email = models.EmailField(_('email address'), unique=True)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
+    objects = CustomUserManager()
     def __str__(self):
-        return self.username
+        return self.email
 
 class producto(models.Model):
     nombre = models.CharField(max_length=200)
