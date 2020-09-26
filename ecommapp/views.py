@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from ecommapp.serializers import categoriaSerializer, clienteSerializer, cuponSerializer, detalle_pedidoSerializer, estado_pedidoSerializer, pedidoSerializer, productoSerializer
+from ecommapp.serializers import categoriaSerializer, clienteSerializer,cuponSerializer, detalle_pedidoSerializer, estado_pedidoSerializer, pedidoSerializer, productoSerializer
 from ecommapp.models import categoria, cliente, cupon, detalle_pedido, estado_pedido, pedido, producto
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
@@ -7,9 +7,11 @@ from rest_framework import filters
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-
+from rest_framework import authentication, permissions
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.contrib.auth.models import User
+from rest_framework import serializers
 
 # from culqi import __version__
 # from culqi.client import Culqi
@@ -79,6 +81,7 @@ class productoViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated,]
     filter_backends = [filters.SearchFilter]
     search_fields=['nombre','descripcion','categoria']
+
     
 def payment(request):
     return render(request, 'payment/index.html')
@@ -108,7 +111,8 @@ def charges(request):
 
         url = 'https://api.culqi.com/v2/charges'
         charge = requests.post(url, json=data, headers=hed)
-
+         
+        print(charge.json())         
         logger.debug(charge.json())
         dicRes = {'message':'EXITO'}
         return JsonResponse(charge.json(), safe=False)

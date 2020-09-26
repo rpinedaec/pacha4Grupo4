@@ -18,6 +18,7 @@ class cuponSerializer(serializers.ModelSerializer):
         model = cupon
         fields = '__all__'
 class detalle_pedidoSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model = detalle_pedido
         fields = '__all__'
@@ -25,7 +26,11 @@ class estado_pedidoSerializer(serializers.ModelSerializer):
     class Meta:
         model = estado_pedido
         fields = '__all__'
+
+
+
 class pedidoSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model = pedido
         fields = '__all__'

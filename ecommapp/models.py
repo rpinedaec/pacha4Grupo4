@@ -24,17 +24,13 @@ class categoria(models.Model):
     def __str__(self):
         return self.nombre
 
-class cliente(AbstractUser):
-    username = None
-    name = models.CharField(max_length=200)
-    email = models.EmailField(_('email address'), unique=True)
-
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
-
-    objects = CustomUserManager()
+class cliente(models.Model):
+    username = models.CharField(max_length=200)
+    nombre = models.CharField(max_length=200)
+    email = models.EmailField()
+    password = models.CharField(max_length=200)
     def __str__(self):
-        return self.email
+        return self.username
 
 class producto(models.Model):
     nombre = models.CharField(max_length=200)
@@ -42,6 +38,7 @@ class producto(models.Model):
     categoria = models.ForeignKey(categoria, on_delete=models.CASCADE)
     igv = models.BooleanField(default=True)
     imagen = models.FileField()
+    imagen_card = models.FileField(blank=True,null=True)
     precio = models.DecimalField(max_digits=10,decimal_places=2)
     descuento = models.DecimalField(max_digits=10,decimal_places=2)
     def __str__(self):

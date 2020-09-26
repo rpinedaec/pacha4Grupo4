@@ -12,13 +12,17 @@ class categoriaAdmin(admin.ModelAdmin):
     list_display=('nombre','descripcion')
 
 class clienteAdmin(admin.ModelAdmin):
-    list_display=('username', 'name', 'email', 'password')
+    list_display=('username','nombre', 'email', 'password')
 
 class productoAdmin(admin.ModelAdmin):
     list_display=('nombre','descripcion','categoria','igv','imagen','precio','descuento')
+
+class pedidoAdmin(admin.ModelAdmin):
+    list_display=('fecha', 'cliente',)
 
 admin.site.register(cupon, cuponAdmin)
 admin.site.register(estado_pedido, estado_pedidoAdmin)
 admin.site.register(categoria,categoriaAdmin)
 admin.site.register(cliente,clienteAdmin)
 admin.site.register(producto,productoAdmin)
+admin.site.register(pedido,pedidoAdmin)
